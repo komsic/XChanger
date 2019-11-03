@@ -3,6 +3,6 @@
   "plugins": ["jsx-a11y"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
-    "react/prop-types": 0
+    "import/no-extraneous-dependencies": 0
   }
 }

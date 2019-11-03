@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Button emoji 1`] = `
+<button
+  onClick={[Function]}
+  type="button"
+>
+  <span
+    aria-label="so cool"
+    role="img"
+  >
+    😀 😎 👍 💯
+  </span>
+</button>
+`;
+
+exports[`Storyshots Button text 1`] = `
+<button
+  onClick={[Function]}
+  type="button"
+>
+  Hello Button
+</button>
+`;
