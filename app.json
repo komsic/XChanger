@@ -1,21 +1,17 @@
 {
-  "addons": [
-
-  ],
+  "addons": [],
   "buildpacks": [
     {
-      "url": "heroku/nodejs"
+      "url": "mars/create-react-app"
     }
   ],
-  "env": {
-  },
+  "env": {},
   "formation": {
     "web": {
       "quantity": 1
     }
   },
   "name": "XChanger",
-  "scripts": {
-  },
+  "scripts": {},
   "stack": "heroku-18"
 }

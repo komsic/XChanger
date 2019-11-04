@@ -13,6 +13,7 @@
 
 # editor
 /.vscode
+template.md
 
 # misc
 .DS_Store
