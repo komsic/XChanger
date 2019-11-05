@@ -1,0 +1,64 @@
+/*
+Button
+
+Buttons... You know what that is, right?
+
+Markup:
+<button class="button {{modifier_class}}">Manage Currencies</button>
+
+.button--primary - change button background to the primary color
+.button--secondary - change button background to the secondary color
+.button--danger - change button background to the danger color
+
+Styleguide Button.Button
+*/
+.button {
+  border: 0;
+  padding: 0.5em 1em;
+  color: white;
+  border-radius: 0.625em;
+}
+.button--primary {
+  background-color: #219653;
+}
+.button--secondary {
+  background-color: #962164;
+}
+.button--danger {
+  background-image: linear-gradient(90.54deg, #e01717 0%, #f20066 100%);
+}
+
+/*
+Button Image
+
+A button with an svg image
+
+Markup:
+<button class="button-image {{modifier_class}}">
+  <img src="../cancel.svg" alt=""/>
+</button>
+
+.button-image--circle - change button background to the primary color
+.button--primary - change button background to the primary color
+.button--secondary - change button background to the secondary color
+.button--danger - change button background to the danger color
+
+Styleguide Button.Button-Image
+*/
+.button-image {
+  border: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.09375rem;
+  padding-bottom: 1.09375rem;
+  line-height: 1;
+}
+.button-image > img {
+  width: 1.5em;
+  height: 1.5em;
+}
+.button-image--circle {
+  border-radius: 50%;
+  padding-left: 1.09375rem;
+  padding-right: 1.09375rem;
+}
