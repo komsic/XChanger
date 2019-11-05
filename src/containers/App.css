@@ -1,0 +1,31 @@
+/*
+Font Sizes
+
+Different font sizes supported by the system
+
+Markup:
+<div class="fz {{modifier_class}}">XChanger</div>
+
+.huge - adjust font size to 2em
+.big - adjust font size to 1.75em
+.large - adjust font size to 1.5em
+.medium - adjust font size to 1.25em
+.small - adjust font size to 1em
+
+Styleguide Font-size
+*/
+.huge {
+  font-size: 2em;
+}
+.big {
+  font-size: 1.75em;
+}
+.large {
+  font-size: 1.5em;
+}
+.medium {
+  font-size: 1.25em;
+}
+.small {
+  font-size: 1em;
+}

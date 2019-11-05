@@ -1,24 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Button emoji 1`] = `
+exports[`Storyshots Button image 1`] = `
 <button
+  className="button-image button--primary"
   onClick={[Function]}
   type="button"
 >
-  <span
-    aria-label="so cool"
-    role="img"
-  >
-    😀 😎 👍 💯
-  </span>
+  <img
+    alt="button logo"
+    src="cancel.svg"
+  />
+</button>
+`;
+
+exports[`Storyshots Button image-circle 1`] = `
+<button
+  className="button-image button-image--circle button--primary"
+  onClick={[Function]}
+  type="button"
+>
+  <img
+    alt="button logo"
+    src="cancel.svg"
+  />
 </button>
 `;
 
 exports[`Storyshots Button text 1`] = `
 <button
+  className="button button--primary"
   onClick={[Function]}
   type="button"
 >
-  Hello Button
+  Manage Currencies
 </button>
 `;
