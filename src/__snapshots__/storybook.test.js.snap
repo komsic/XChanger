@@ -35,3 +35,34 @@ exports[`Storyshots Button text 1`] = `
   Manage Currencies
 </button>
 `;
+
+exports[`Storyshots Card long 1`] = `
+<li
+  className="card"
+>
+  <div
+    className="card__header"
+  >
+    <p
+      className="medium"
+    >
+      KM
+    </p>
+    <p
+      className="large"
+    >
+      BAM
+    </p>
+  </div>
+  <p
+    className="medium"
+  >
+    Bosnia-Herzegovina Convertible Mark
+  </p>
+  <p
+    className="large"
+  >
+    1 NGN - 1587 BAM
+  </p>
+</li>
+`;

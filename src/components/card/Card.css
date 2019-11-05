@@ -1,0 +1,41 @@
+/*
+Card
+
+A card of currency that displays its name, symbol, sign, and its current exchange rate with the base currrency
+
+Markup:
+<li class="card">
+  <div class="card__header">
+    <p class="medium">KM</p>
+    <p class="large">BAM</p>
+  </div>
+  <p class="medium">Bosnia-Herzegovina Convertible Mark</p>
+  <p class="large">1 BAM - 360.00 NGN</p>
+</li>
+
+Styleguide Card
+*/
+.card {
+  list-style: none;
+  background-color: #219653;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.3125em;
+}
+.card > * + * {
+  margin-top: 1rem;
+}
+.card__header {
+  display: flex;
+  align-items: center;
+}
+.card__header > p:nth-child(1) {
+  background-color: #962164;
+  width: 3.75rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  line-height: 1;
+  text-align: center;
+  border-radius: 0.8rem;
+  margin-right: 1rem;
+}
