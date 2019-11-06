@@ -66,3 +66,91 @@ exports[`Storyshots Card long 1`] = `
   </p>
 </li>
 `;
+
+exports[`Storyshots DropdownInput another flavour 1`] = `
+<div
+  className="dropdown-input dropdown-input--r"
+>
+  <input
+    list="currecency"
+    maxLength={35}
+    name="random"
+    onChange={[Function]}
+    placeholder="NGN"
+    type="text"
+    value=""
+  />
+  <datalist
+    id="currecency"
+  >
+    <option
+      value="NGN"
+    >
+      NGN
+    </option>
+    <option
+      value="USD"
+    >
+      USD
+    </option>
+    <option
+      value="EUR"
+    >
+      EUR
+    </option>
+    <option
+      value="BAM"
+    >
+      BAM
+    </option>
+  </datalist>
+  <img
+    alt="dropdown logo"
+    src="dropdown.svg"
+  />
+</div>
+`;
+
+exports[`Storyshots DropdownInput plain 1`] = `
+<div
+  className="dropdown-input "
+>
+  <input
+    list="currecency"
+    maxLength={35}
+    name="random"
+    onChange={[Function]}
+    placeholder="NGN"
+    type="text"
+    value=""
+  />
+  <datalist
+    id="currecency"
+  >
+    <option
+      value="NGN"
+    >
+      NGN
+    </option>
+    <option
+      value="USD"
+    >
+      USD
+    </option>
+    <option
+      value="EUR"
+    >
+      EUR
+    </option>
+    <option
+      value="BAM"
+    >
+      BAM
+    </option>
+  </datalist>
+  <img
+    alt="dropdown logo"
+    src="dropdown.svg"
+  />
+</div>
+`;

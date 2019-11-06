@@ -1,0 +1,48 @@
+/*
+Dropdown Input
+
+A datalist dropdown with dropdown symbol
+
+Markup:
+<div class="dropdown-input">
+  <input type="text" list="currency-codes" placeholder="NGN">
+  <datalist id="currency-codes">
+    <option value="NGN">NGN</option>
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+    <option value="BTC">BTC</option>
+  </datalist>
+  <img src="../dropdown.svg" alt="">
+</div>
+
+Styleguide Dropdown-input
+*/
+.dropdown-input {
+  position: relative;
+}
+.dropdown-input > input {
+  padding: 1.375em 3em 1.375em 1em;
+  border: 0.0625em solid #219653;
+  border-radius: 0px 0.3125em 0.3125em 0px;
+  width: 100%;
+  letter-spacing: 0.05em;
+}
+.dropdown-input--r {
+  max-width: 6rem;
+}
+.dropdown-input--r > input {
+  border-radius: 0.3rem;
+  padding-bottom: 0.8rem;
+  padding-top: 0.8rem;
+  padding-right: 1em;
+}
+.dropdown-input > img {
+  position: absolute;
+  top: 1.7625rem;
+  right: 1.125em;
+  width: 0.875rem;
+  height: 0.5rem;
+}
+.dropdown-input--r > img {
+  top: 1.175rem;
+}
