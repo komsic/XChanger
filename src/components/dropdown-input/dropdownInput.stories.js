@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 
-import '../../../public/normalize.css';
 import DropdownInput from './DropdownInput';
 
 const list = [
