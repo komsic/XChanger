@@ -1,0 +1,38 @@
+/*
+Currency Chooser
+
+A datalist dropdown with an image button
+
+Markup:
+<div class="currency-chooser">
+  <div class="dropdown-input">
+    <input type="text" list="currency-codes" placeholder="NGN" />
+    <datalist id="currency-codes">
+      <option value="NGN">NGN</option>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="BTC">BTC</option>
+    </datalist>
+    <img src="../dropdown.svg" alt="" />
+  </div>
+  <button class="button-image button--secondary">
+    <img src="../plus.svg" alt="" />
+  </button>
+</div>
+
+Styleguide Currency Chooser
+*/
+.currency-chooser {
+  display: flex;
+}
+.currency-chooser > .dropdown-input {
+  flex: 1;
+}
+.currency-chooser > .dropdown-input > input {
+  border-radius: 0.3125rem 0 0 0.3125em;
+  border-right-width: 0;
+}
+.currency-chooser > button {
+  max-width: 3.5em;
+  border-radius: 0 0.3125rem 0.3125em 0;
+}

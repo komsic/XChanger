@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import './Button.css';
 
 const Button = ({
-  children, classes, isImg, onClick,
+  children, classes, isImg, onClick, type,
 }) => (
+  // eslint-disable-next-line react/button-has-type
   <button
-    type="button"
+    type={type}
     onClick={onClick}
     className={`${isImg ? 'button-image' : 'button'} ${classes}`}
   >
@@ -22,12 +23,15 @@ Button.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
+  type: PropTypes.string,
 };
 
 Button.defaultProps = {
   classes: '',
   isImg: false,
+  type: 'button',
+  onClick: undefined,
 };
 
 export default Button;
