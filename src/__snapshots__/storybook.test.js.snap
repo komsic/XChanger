@@ -1763,6 +1763,26 @@ exports[`Storyshots CurrencyChooser default 1`] = `
 </form>
 `;
 
+exports[`Storyshots CurrencyLabel default 1`] = `
+<li
+  className="currency-label"
+>
+  <p>
+    (NGN) Nigerian Naira
+  </p>
+  <button
+    className="button-image button--danger"
+    onClick={[Function]}
+    type="button"
+  >
+    <img
+      alt="cancel logo"
+      src="cancel.svg"
+    />
+  </button>
+</li>
+`;
+
 exports[`Storyshots DropdownInput another flavour 1`] = `
 <div
   className="dropdown-input dropdown-input--r"
