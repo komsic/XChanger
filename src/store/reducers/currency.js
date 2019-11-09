@@ -11,8 +11,39 @@ const applyRemoveCurrency = (state, { name }) => {
 
 
 export const INITIAL_STATE = {
+  baseCurrency: {
+    symbol: '₦',
+    code: 'NGN',
+    name: 'Nigerian Naira',
+  },
   allCurrencies: currencies,
-  selectedCurrencies: [],
+  selectedCurrencies: [
+    {
+      symbol: '$',
+      name: 'United States Dollar',
+      code: 'USD',
+    },
+    {
+      symbol: 'CA$',
+      name: 'Canadian Dollar',
+      code: 'CAD',
+    },
+    {
+      symbol: '€',
+      name: 'Euro',
+      code: 'EUR',
+    },
+    {
+      symbol: 'AED',
+      name: 'United Arab Emirates Dirham',
+      code: 'AED',
+    },
+    {
+      symbol: 'KM',
+      name: 'Bosnia-Herzegovina Convertible Mark',
+      code: 'BAM',
+    },
+  ],
 };
 
 const currencyReducer = (state = INITIAL_STATE, action) => {

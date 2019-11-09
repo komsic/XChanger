@@ -1763,6 +1763,80 @@ exports[`Storyshots CurrencyChooser default 1`] = `
 </form>
 `;
 
+exports[`Storyshots CurrencyForm default 1`] = `
+<div
+  className="currency-form"
+>
+  <h5
+    className="currency-form__title"
+  >
+    Send Currency
+  </h5>
+  <div
+    className="currency-form__input"
+  >
+    <input
+      disabled={false}
+      name="currency-one"
+      onChange={[Function]}
+      placeholder="0.00"
+      value="0"
+    />
+    <div
+      className="dropdown-input "
+    >
+      <input
+        list="selectedCurrencies"
+        maxLength={3}
+        name="currency-one"
+        onChange={[Function]}
+        placeholder="NGN"
+        type="text"
+        value="USD"
+      />
+      <datalist
+        id="selectedCurrencies"
+      >
+        <option
+          value="Nigerian Naira"
+        >
+          NGN
+        </option>
+        <option
+          value="United States Dollar"
+        >
+          USD
+        </option>
+        <option
+          value="Canadian Dollar"
+        >
+          CAD
+        </option>
+        <option
+          value="Euro"
+        >
+          EUR
+        </option>
+        <option
+          value="United Arab Emirates Dirham"
+        >
+          AED
+        </option>
+        <option
+          value="Bosnia-Herzegovina Convertible Mark"
+        >
+          BAM
+        </option>
+      </datalist>
+      <img
+        alt="dropdown logo"
+        src="dropdown.svg"
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots CurrencyLabel default 1`] = `
 <li
   className="currency-label"

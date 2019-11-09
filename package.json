@@ -44,6 +44,8 @@
     "babel-plugin-macros": "^2.6.1",
     "coveralls": "^3.0.7",
     "deep-freeze": "^0.0.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "eslint-config-airbnb": "^18.0.1",
     "react-test-renderer": "^16.11.0",
     "require-context.macro": "^1.2.2"

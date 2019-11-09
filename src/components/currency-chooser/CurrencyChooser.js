@@ -6,7 +6,7 @@ import Button from '../button/Button';
 import plusLogo from '../../assets/images/plus.svg';
 
 import './CurrencyChooser.css';
-import getAllCurrenciesNameAndCode from '../../store/selectors/currency';
+import { getAllCurrenciesNameAndCode } from '../../store/selectors/currency';
 
 
 const CurrencyChooser = ({

@@ -1,4 +1,6 @@
-const getAllCurrenciesNameAndCode = ({ currencyState: { allCurrencies } }) => Object
+export const getAllCurrenciesNameAndCode = ({ currencyState: { allCurrencies } }) => Object
   .values(allCurrencies).map(({ name, code }) => ({ name, code }));
 
-export default getAllCurrenciesNameAndCode;
+export const getSelectedCurrenciesWithBaseCurrency = ({
+  currencyState: { baseCurrency, selectedCurrencies },
+}) => [baseCurrency, ...selectedCurrencies];
