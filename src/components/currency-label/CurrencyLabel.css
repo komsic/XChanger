@@ -1,0 +1,29 @@
+/*
+Currency Label
+
+A label with an image button
+
+Markup:
+<div class="currency-label">
+  <p>Bosnia-Herzegovina Convertible Mark</p>
+  <button class="button-image button--danger">
+    <img src="../cancel.svg" alt="" />
+  </button>
+</div>
+
+Styleguide Currency Label
+*/
+.currency-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.currency-label > p {
+  flex: 1;
+  border: 0.0625rem solid #219653;
+  padding-left: 1em;
+  padding-top: 1.09375rem;
+  padding-bottom: 1.09375rem;
+  border-radius: 0.3125rem 0 0 0.3125em;
+  border-right-width: 0;
+}
