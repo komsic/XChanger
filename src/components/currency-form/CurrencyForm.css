@@ -1,0 +1,49 @@
+/*
+Currency Form
+
+A two input form that accept the currency and its value
+
+Markup:
+<div class="currency-form">
+  <h5 class="currency-form__title small">Send Currency</h5>
+  <div class="currency-form__input small">
+    <input type="text" placeholder="0.00">
+    <div class="dropdown-input">
+      <input type="text" list="currency-codes" placeholder="NGN">
+      <datalist id="currency-codes">
+        <option value="NGN">NGN</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="BTC">BTC</option>
+      </datalist>
+      <img src="../dropdown.svg" alt="">
+    </div>
+  </div>
+</div>
+
+Styleguide Currency-form
+*/
+.currency-form__title {
+  margin-bottom: 0.5em;
+}
+.currency-form__input {
+  display: flex;
+}
+.currency-form__input > input {
+  padding: 1.375em 1em;
+  border: 0.0625em solid #219653;
+  border-radius: 0.3125rem 0 0 0.3125rem;
+  border-right-width: 0;
+  flex: 7;
+}
+.currency-form__input > div {
+  flex: 3;
+}
+@media (min-width: 645px) {
+  .currency-form__input > input {
+    flex: 6.5;
+  }
+  .currency-form__input > div {
+    flex: 3.5;
+  }
+}

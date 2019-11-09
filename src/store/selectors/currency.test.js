@@ -1,4 +1,4 @@
-import getAllCurrenciesNameAndCode from './currency';
+import { getAllCurrenciesNameAndCode, getSelectedCurrenciesWithBaseCurrency } from './currency';
 
 describe('get all currencies names and codes', () => {
   it('should return array of currency names and codes', () => {
@@ -41,5 +41,18 @@ describe('get all currencies names and codes', () => {
       { name: 'Canadian Dollar', code: 'CAD' },
       { name: 'Euro', code: 'EUR' },
     ]);
+  });
+});
+
+describe('get selected currencies with base currency', () => {
+  it('should return an array composing of selected currency and base currency', () => {
+    const result = getSelectedCurrenciesWithBaseCurrency({
+      currencyState: {
+        baseCurrency: 'NGN',
+        selectedCurrencies: ['USD', 'MSI', 'MSG'],
+      },
+    });
+
+    expect(result).toEqual(['NGN', 'USD', 'MSI', 'MSG']);
   });
 });
