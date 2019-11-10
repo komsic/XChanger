@@ -1,0 +1,38 @@
+/*modal module*/
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal.is-close {
+  display: none;
+}
+.modal > div {
+  position: fixed;
+  top: 4em;
+  left: 0.5em;
+  right: 0.5em;
+  bottom: 4em;
+  background-color: #fff;
+  max-width: 705px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 0.5em;
+  overflow-y: auto;
+  padding-bottom: 2em;
+}
+@media (min-width: 375px) {
+  .modal > div {
+    left: 16px;
+    right: 16px;
+  }
+}
+@media (min-width: 620px) {
+  .modal > div {
+    left: 2em;
+    right: 2em;
+  }
+}

@@ -1944,3 +1944,26 @@ exports[`Storyshots DropdownInput plain 1`] = `
   />
 </div>
 `;
+
+exports[`Storyshots Modal default 1`] = `
+<div>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Show Modal
+  </button>
+  <div
+    className="modal is-close"
+  >
+    <div>
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        Modal Cancel
+      </button>
+    </div>
+  </div>
+</div>
+`;
