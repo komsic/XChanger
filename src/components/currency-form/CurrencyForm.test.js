@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import CurrencyForm from './CurrencyForm';
 import ProviderTest from '../../ProviderTest';
 
-it('renders without crashing', () => {
+it('should test if the the prop functions were called', () => {
   const handleCurrencyValueChange = jest.fn();
   const handleCurrencyNameChange = jest.fn();
   const event = {
