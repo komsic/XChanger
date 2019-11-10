@@ -1,0 +1,23 @@
+/*header module*/
+.header-container {
+  background-color: #962164;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 16px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  max-width: 1024px;
+}
+.header > button {
+  font-size: 1.2em;
+}
+@media (min-width: 645px) {
+  .header {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}
