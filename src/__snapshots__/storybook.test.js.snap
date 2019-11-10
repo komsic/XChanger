@@ -1945,6 +1945,29 @@ exports[`Storyshots DropdownInput plain 1`] = `
 </div>
 `;
 
+exports[`Storyshots Header default 1`] = `
+<div
+  className="header-container"
+>
+  <header
+    className="header"
+  >
+    <h1
+      className="header__title"
+    >
+      XChanger
+    </h1>
+    <button
+      className="button button--primary"
+      onClick={[Function]}
+      type="button"
+    >
+      Manage Currencies
+    </button>
+  </header>
+</div>
+`;
+
 exports[`Storyshots Modal default 1`] = `
 <div>
   <button
