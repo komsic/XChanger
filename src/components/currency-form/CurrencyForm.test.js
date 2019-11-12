@@ -25,6 +25,6 @@ it('should test if the the prop functions were called', () => {
   );
   component.find('input').at(0).simulate('change', event);
   component.find('input').at(1).simulate('change', event);
-  expect(handleCurrencyValueChange).toBeCalledWith('the', 'cuu');
+  expect(handleCurrencyValueChange).toBeCalledWith('the', 'cuu', true);
   expect(handleCurrencyNameChange).toHaveBeenCalled();
 });

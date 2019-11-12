@@ -9,7 +9,6 @@ const applyRemoveCurrency = (state, { name }) => {
   };
 };
 
-
 export const INITIAL_STATE = {
   baseCurrency: {
     symbol: '₦',
@@ -44,6 +43,14 @@ export const INITIAL_STATE = {
       code: 'BAM',
     },
   ],
+  rates: {
+    NGN: 362.000063,
+    USD: 1,
+    CAD: 1.319045,
+    EUR: 0.90287,
+    AED: 3.673198,
+    BAM: 1.773642,
+  },
 };
 
 const currencyReducer = (state = INITIAL_STATE, action) => {

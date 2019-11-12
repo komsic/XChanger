@@ -1,4 +1,7 @@
-import { getAllCurrenciesNameAndCode, getSelectedCurrenciesWithBaseCurrency } from './currency';
+import {
+  getAllCurrenciesNameAndCode, getSelectedCurrenciesWithBaseCurrency, isCurrencyValid, getRates,
+} from './currency';
+import { INITIAL_STATE } from '../reducers/currency';
 
 describe('get all currencies names and codes', () => {
   it('should return array of currency names and codes', () => {
@@ -54,5 +57,39 @@ describe('get selected currencies with base currency', () => {
     });
 
     expect(result).toEqual(['NGN', 'USD', 'MSI', 'MSG']);
+  });
+});
+
+describe('check currency validity', () => {
+  it('should ensure the given currency is among the selected currencies or base currency', () => {
+    const isNull = isCurrencyValid({ currencyState: INITIAL_STATE });
+
+    expect(isNull('NGN')).toBeTruthy();
+  });
+});
+
+describe('currency rate', () => {
+  const getRate = getRates({
+    currencyState: {
+      baseCurrency: {
+        code: 'NGN',
+      },
+      rates: {
+        NGN: 1,
+        USD: 2,
+      },
+    },
+  });
+
+  it('should return zero if money is an empty string', () => {
+    expect(getRate('NGN', 'USD', '')).toEqual(0);
+  });
+
+  it('should return 1.00 when the code argument value is NGN', () => {
+    expect(getRate('NGN')).toEqual('1.00');
+  });
+
+  it('should return 3.00', () => {
+    expect(getRate('NGN', 'USD', 6)).toEqual('3.00');
   });
 });
