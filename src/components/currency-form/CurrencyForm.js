@@ -18,7 +18,7 @@ const CurrencyForm = ({
         placeholder="0.00"
         disabled={disabled}
         name={name}
-        onChange={({ target }) => handleCurrencyValueChange(target.value, name)}
+        onChange={({ target }) => handleCurrencyValueChange(target.value, name, true)}
         value={currencyValue}
       />
 
@@ -29,6 +29,7 @@ const CurrencyForm = ({
         list={list}
         value={currencyName}
         name={name}
+        showValueAsCode
         onChange={
           ({ target }) => handleCurrencyNameChange(target.value.toUpperCase(), target.name)
         }

@@ -1798,34 +1798,34 @@ exports[`Storyshots CurrencyForm default 1`] = `
         id="selectedCurrencies"
       >
         <option
-          value="Nigerian Naira"
+          value="NGN"
         >
-          NGN
+          Nigerian Naira
         </option>
         <option
-          value="United States Dollar"
+          value="USD"
         >
-          USD
+          United States Dollar
         </option>
         <option
-          value="Canadian Dollar"
+          value="CAD"
         >
-          CAD
+          Canadian Dollar
         </option>
         <option
-          value="Euro"
+          value="EUR"
         >
-          EUR
+          Euro
         </option>
         <option
-          value="United Arab Emirates Dirham"
+          value="AED"
         >
-          AED
+          United Arab Emirates Dirham
         </option>
         <option
-          value="Bosnia-Herzegovina Convertible Mark"
+          value="BAM"
         >
-          BAM
+          Bosnia-Herzegovina Convertible Mark
         </option>
       </datalist>
       <img
@@ -1965,6 +1965,168 @@ exports[`Storyshots Header default 1`] = `
       Manage Currencies
     </button>
   </header>
+</div>
+`;
+
+exports[`Storyshots Hero default 1`] = `
+<div
+  className="hero-container"
+>
+  <div
+    className="hero"
+  >
+    <h3
+      className="medium"
+    >
+      Check Currency Rate
+    </h3>
+    <div
+      className="hero__body"
+    >
+      <div
+        className="currency-form"
+      >
+        <h5
+          className="currency-form__title"
+        >
+          Send Currency
+        </h5>
+        <div
+          className="currency-form__input"
+        >
+          <input
+            disabled={false}
+            name="currencyOne"
+            onChange={[Function]}
+            placeholder="0.00"
+            value="0"
+          />
+          <div
+            className="dropdown-input "
+          >
+            <input
+              list="selected-currencies"
+              maxLength={3}
+              name="currencyOne"
+              onChange={[Function]}
+              placeholder="NGN"
+              type="text"
+              value="NGN"
+            />
+            <datalist
+              id="selected-currencies"
+            >
+              <option
+                value="NGN"
+              >
+                Nigerian Naira
+              </option>
+              <option
+                value="USD"
+              >
+                United States Dollar
+              </option>
+              <option
+                value="CAD"
+              >
+                Canadian Dollar
+              </option>
+              <option
+                value="EUR"
+              >
+                Euro
+              </option>
+              <option
+                value="AED"
+              >
+                United Arab Emirates Dirham
+              </option>
+              <option
+                value="BAM"
+              >
+                Bosnia-Herzegovina Convertible Mark
+              </option>
+            </datalist>
+            <img
+              alt="dropdown logo"
+              src="dropdown.svg"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="currency-form"
+      >
+        <h5
+          className="currency-form__title"
+        >
+          Receive Currency
+        </h5>
+        <div
+          className="currency-form__input"
+        >
+          <input
+            disabled={false}
+            name="currencyTwo"
+            onChange={[Function]}
+            placeholder="0.00"
+            value="0"
+          />
+          <div
+            className="dropdown-input "
+          >
+            <input
+              list="selected-currencies"
+              maxLength={3}
+              name="currencyTwo"
+              onChange={[Function]}
+              placeholder="NGN"
+              type="text"
+              value="USD"
+            />
+            <datalist
+              id="selected-currencies"
+            >
+              <option
+                value="NGN"
+              >
+                Nigerian Naira
+              </option>
+              <option
+                value="USD"
+              >
+                United States Dollar
+              </option>
+              <option
+                value="CAD"
+              >
+                Canadian Dollar
+              </option>
+              <option
+                value="EUR"
+              >
+                Euro
+              </option>
+              <option
+                value="AED"
+              >
+                United Arab Emirates Dirham
+              </option>
+              <option
+                value="BAM"
+              >
+                Bosnia-Herzegovina Convertible Mark
+              </option>
+            </datalist>
+            <img
+              alt="dropdown logo"
+              src="dropdown.svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 

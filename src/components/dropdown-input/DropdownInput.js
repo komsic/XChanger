@@ -5,7 +5,8 @@ import './DropdownInput.css';
 import dropdownLogo from '../../assets/images/dropdown.svg';
 
 const DropdownInput = ({
-  maxLength, name, onChange, value, placeholder, list, id, classes, isDataListPresent,
+  maxLength, name, onChange, value, placeholder, list, id, classes,
+  isDataListPresent, showValueAsCode,
 }) => (
   <div className={`dropdown-input ${classes}`}>
     <input
@@ -20,7 +21,14 @@ const DropdownInput = ({
 
     {isDataListPresent && (
     <datalist id={id}>
-      {list.map((item) => <option key={item.code} value={item.name}>{item.code}</option>)}
+      {list.map((item) => (
+        <option
+          key={item.code}
+          value={showValueAsCode ? item.code : item.name}
+        >
+          {showValueAsCode ? item.name : item.code}
+        </option>
+      ))}
     </datalist>
     )}
 
@@ -36,6 +44,7 @@ DropdownInput.propTypes = {
   value: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   isDataListPresent: PropTypes.bool,
+  showValueAsCode: PropTypes.bool,
   classes: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
@@ -45,6 +54,7 @@ DropdownInput.defaultProps = {
   name: '',
   placeholder: '',
   isDataListPresent: true,
+  showValueAsCode: false,
   classes: '',
 };
 
