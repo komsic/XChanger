@@ -46,3 +46,7 @@ Styleguide Dropdown-input
 .dropdown-input--r > img {
   top: 1.175rem;
 }
+
+.error {
+  color: red;
+}

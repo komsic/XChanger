@@ -6,10 +6,11 @@ import dropdownLogo from '../../assets/images/dropdown.svg';
 
 const DropdownInput = ({
   maxLength, name, onChange, value, placeholder, list, id, classes,
-  isDataListPresent, showValueAsCode,
+  isDataListPresent, showValueAsCode, status,
 }) => (
   <div className={`dropdown-input ${classes}`}>
     <input
+      className={status ? 'error' : ''}
       maxLength={maxLength}
       onChange={onChange}
       name={name}
@@ -45,6 +46,7 @@ DropdownInput.propTypes = {
   placeholder: PropTypes.string,
   isDataListPresent: PropTypes.bool,
   showValueAsCode: PropTypes.bool,
+  status: PropTypes.bool,
   classes: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
@@ -55,6 +57,7 @@ DropdownInput.defaultProps = {
   placeholder: '',
   isDataListPresent: true,
   showValueAsCode: false,
+  status: false,
   classes: '',
 };
 

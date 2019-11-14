@@ -8,8 +8,6 @@ const card = {
   symbol: 'KM',
   name: 'Bosnia-Herzegovina Convertible Mark',
   code: 'BAM',
-  rate: 1587,
-  otherCurrencyCode: 'NGN',
 };
 
 storiesOf('Card', module)

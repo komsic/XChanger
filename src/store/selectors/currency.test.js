@@ -1,41 +1,31 @@
 import {
-  getAllCurrenciesNameAndCode, getSelectedCurrenciesWithBaseCurrency, isCurrencyValid, getRates,
+  getAllCurrenciesNameAndCode, getSelectedCurrenciesWithBaseCurrency, isCurrencyValid, getRates, getBaseCurrency,
 } from './currency';
 import { INITIAL_STATE } from '../reducers/currency';
+
+const currencies = {
+  USD: {
+    symbol: '$',
+    name: 'United States Dollar',
+    code: 'USD',
+  },
+  CAD: {
+    symbol: 'CA$',
+    name: 'Canadian Dollar',
+    code: 'CAD',
+  },
+  EUR: {
+    symbol: '€',
+    name: 'Euro',
+    code: 'EUR',
+  },
+};
 
 describe('get all currencies names and codes', () => {
   it('should return array of currency names and codes', () => {
     const result = getAllCurrenciesNameAndCode({
       currencyState: {
-        allCurrencies: {
-          USD: {
-            symbol: '$',
-            name: 'United States Dollar',
-            symbol_native: '$',
-            decimal_digits: 2,
-            rounding: 0,
-            code: 'USD',
-            name_plural: 'United States Dollars',
-          },
-          CAD: {
-            symbol: 'CA$',
-            name: 'Canadian Dollar',
-            symbol_native: '$',
-            decimal_digits: 2,
-            rounding: 0,
-            code: 'CAD',
-            name_plural: 'Canadian dollars',
-          },
-          EUR: {
-            symbol: '€',
-            name: 'Euro',
-            symbol_native: '€',
-            decimal_digits: 2,
-            rounding: 0,
-            code: 'EUR',
-            name_plural: 'euros',
-          },
-        },
+        allCurrencies: currencies,
       },
     });
 
@@ -91,5 +81,19 @@ describe('currency rate', () => {
 
   it('should return 3.00', () => {
     expect(getRate('NGN', 'USD', 6)).toEqual('3.00');
+  });
+});
+
+describe('getBaseCurrency', () => {
+  const getCurrency = getBaseCurrency({
+    currencyState: { allCurrencies: currencies },
+  });
+
+  it('should return base currency if the input arg is a 3 letters word', () => {
+    expect(getCurrency('USD')).toEqual(currencies.USD);
+  });
+
+  it('should return base currency if the input arg is > a 3 letters word', () => {
+    expect(getCurrency('United States Dollar')).toEqual(currencies.USD);
   });
 });
