@@ -1950,6 +1950,24 @@ exports[`Storyshots DropdownInput plain 1`] = `
 </div>
 `;
 
+exports[`Storyshots Footer default 1`] = `
+<footer
+  className="footer"
+>
+  <p
+    className="large"
+  >
+    Made with
+     
+    <span>
+      ❤
+    </span>
+     
+    by komsic
+  </p>
+</footer>
+`;
+
 exports[`Storyshots Header default 1`] = `
 <div
   className="header-container"
