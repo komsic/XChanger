@@ -1,5 +1,5 @@
 import currencies from '../../assets/json/currency.json';
-import { CURRENCY_LIST_REMOVE, CURRENCY_BASE_ADD } from '../actionTypes';
+import { CURRENCY_LIST_REMOVE, CURRENCY_BASE_ADD, CURRENCY_SELECTED_ADD } from '../actionTypes';
 
 const applyRemoveCurrency = (state, { name }) => {
   const [, ...names] = name.split(' ');
@@ -16,6 +16,15 @@ const applyAddBaseCurrency = (state, { currency }) => {
     ...state,
     baseCurrency: currency,
     selectedCurrencies: selectedCurrencies.filter(({ code }) => code !== currency.code),
+  };
+};
+
+export const applyAddSelectedCurrency = (state, { currency }) => {
+  const { selectedCurrencies } = state;
+
+  return {
+    ...state,
+    selectedCurrencies: [...selectedCurrencies, currency],
   };
 };
 
@@ -67,6 +76,7 @@ const currencyReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case CURRENCY_LIST_REMOVE: return applyRemoveCurrency(state, action);
     case CURRENCY_BASE_ADD: return applyAddBaseCurrency(state, action);
+    case CURRENCY_SELECTED_ADD: return applyAddSelectedCurrency(state, action);
     default: return state;
   }
 };

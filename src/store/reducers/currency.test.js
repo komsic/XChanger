@@ -1,6 +1,6 @@
 import deepFreeze from 'deep-freeze';
 import currencyReducer, { INITIAL_STATE } from './currency';
-import { CURRENCY_LIST_REMOVE, CURRENCY_BASE_ADD } from '../actionTypes';
+import { CURRENCY_LIST_REMOVE, CURRENCY_BASE_ADD, CURRENCY_SELECTED_ADD } from '../actionTypes';
 
 describe('currency reducer', () => {
   const currencies = {
@@ -55,5 +55,20 @@ describe('currency reducer', () => {
     }, { type: CURRENCY_BASE_ADD, currency: currencies.CAD });
 
     expect(newState.baseCurrency).toEqual(currencies.CAD);
+  });
+
+  it('should add currency to the selected currencies when the action type is CURRENCY_SELECTED_ADD', () => {
+    const newState = currencyReducer({
+      selectedCurrencies: [...Object.values(currencies)],
+    }, {
+      type: CURRENCY_SELECTED_ADD,
+      currency: {
+        symbol: '€',
+        name: 'Basidr',
+        code: 'NON',
+      },
+    });
+
+    expect(newState.selectedCurrencies.length).toEqual(4);
   });
 });

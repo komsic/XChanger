@@ -1,5 +1,6 @@
 import {
-  getAllCurrenciesNameAndCode, getSelectedCurrenciesWithBaseCurrency, isCurrencyValid, getRates, getBaseCurrency,
+  getAllCurrenciesNameAndCode, getSelectedCurrenciesWithBaseCurrency,
+  isCurrencyValid, getRates, getCurrency,
 } from './currency';
 import { INITIAL_STATE } from '../reducers/currency';
 
@@ -84,16 +85,16 @@ describe('currency rate', () => {
   });
 });
 
-describe('getBaseCurrency', () => {
-  const getCurrency = getBaseCurrency({
+describe('getCurrency', () => {
+  const get = getCurrency({
     currencyState: { allCurrencies: currencies },
   });
 
   it('should return base currency if the input arg is a 3 letters word', () => {
-    expect(getCurrency('USD')).toEqual(currencies.USD);
+    expect(get('USD')).toEqual(currencies.USD);
   });
 
   it('should return base currency if the input arg is > a 3 letters word', () => {
-    expect(getCurrency('United States Dollar')).toEqual(currencies.USD);
+    expect(get('United States Dollar')).toEqual(currencies.USD);
   });
 });

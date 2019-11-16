@@ -1,6 +1,12 @@
 export const getAllCurrenciesNameAndCode = ({ currencyState: { allCurrencies } }) => Object
   .values(allCurrencies).map(({ name, code }) => ({ name, code }));
 
+export const getFilteredCurrencyList = (
+  { currencyState: { allCurrencies, baseCurrency, selectedCurrencies } },
+) => Object.values(allCurrencies)
+  .filter(({ code }) => ![...selectedCurrencies, baseCurrency]
+    .some(({ code: c }) => c === code));
+
 export const getSelectedCurrenciesWithBaseCurrency = ({
   currencyState: { baseCurrency, selectedCurrencies },
 }) => [baseCurrency, ...selectedCurrencies];
@@ -23,11 +29,13 @@ export const getRates = ({ currencyState: { baseCurrency: { code: c }, rates } }
 
 export const getBaseCurrencyCode = ({ currencyState: { baseCurrency } }) => baseCurrency.code;
 
+export const getBaseCurrencyName = ({ currencyState: { baseCurrency } }) => baseCurrency.name;
+
 export const getSelectedCurrencies = (
   { currencyState: { selectedCurrencies } },
 ) => selectedCurrencies;
 
-export const getBaseCurrency = ({ currencyState: { allCurrencies } }) => (currency) => {
+export const getCurrency = ({ currencyState: { allCurrencies } }) => (currency) => {
   if (currency.length === 3) {
     return allCurrencies[currency];
   }

@@ -6,23 +6,32 @@ import Button from '../button/Button';
 import plusLogo from '../../assets/images/plus.svg';
 
 import './CurrencyChooser.css';
-import { getAllCurrenciesNameAndCode } from '../../store/selectors/currency';
-
+import { getCurrency } from '../../store/selectors/currency';
 
 const CurrencyChooser = ({
-  currencyName, list, id, onCurrencySelect, placeholder, clear,
+  currencyName, list, id, onCurrencySelected, placeholder, clear, getCurrencyObject,
 }) => {
   const [currency, setCurrency] = useState(currencyName);
+  const [error, setError] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onCurrencySelect(currency);
-    if (clear) {
-      setCurrency('');
+    const currencyObject = getCurrencyObject(currency);
+    if (currencyObject) {
+      onCurrencySelected(currencyObject);
+
+      if (clear) {
+        setCurrency('');
+      }
+    } else {
+      setError(true);
     }
   };
 
-  const handleCurrencyChange = ({ target: { value } }) => setCurrency(value);
+  const handleCurrencyChange = ({ target: { value } }) => {
+    setError(false);
+    setCurrency(value);
+  };
 
   return (
     <form className="currency-chooser" onSubmit={handleSubmit}>
@@ -31,6 +40,7 @@ const CurrencyChooser = ({
         list={list}
         id={id}
         value={currency}
+        status={error}
         onChange={handleCurrencyChange}
       />
 
@@ -47,7 +57,8 @@ CurrencyChooser.propTypes = {
   placeholder: PropTypes.string,
   currencyName: PropTypes.string,
   clear: PropTypes.bool,
-  onCurrencySelect: PropTypes.func.isRequired,
+  onCurrencySelected: PropTypes.func.isRequired,
+  getCurrencyObject: PropTypes.func.isRequired,
 };
 
 CurrencyChooser.defaultProps = {
@@ -57,9 +68,7 @@ CurrencyChooser.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
-  list: getAllCurrenciesNameAndCode(state),
+  getCurrencyObject: getCurrency(state),
 });
 
-export default connect(
-  mapStateToProps,
-)(CurrencyChooser);
+export default connect(mapStateToProps)(CurrencyChooser);
