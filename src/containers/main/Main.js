@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import DropdownInput from '../../components/dropdown-input/DropdownInput';
 import Card from '../../components/card/Card';
 import {
-  getAllCurrenciesNameAndCode, getSelectedCurrencies, getBaseCurrencyCode, getBaseCurrency,
+  getAllCurrenciesNameAndCode, getSelectedCurrencies, getBaseCurrencyCode, getCurrency,
 } from '../../store/selectors/currency';
 import { doAddBaseCurrency } from '../../store/actions/currency';
 
 import './Main.css';
 
 const Main = ({
-  allCurrencies, selectedCurrencies, baseCurrencyCode, setBaseCurrency, getBaseCurrencyObject,
+  allCurrencies, selectedCurrencies, baseCurrencyCode, setBaseCurrency, getCurrencyObject,
 }) => {
   const [currency, setCurrency] = useState(baseCurrencyCode);
   const [error, setError] = useState(false);
@@ -19,7 +19,7 @@ const Main = ({
   const handleChange = ({ target: { value } }) => {
     setCurrency(value.toUpperCase());
     if (value.length === 3) {
-      const baseCurrency = getBaseCurrencyObject(value.toUpperCase());
+      const baseCurrency = getCurrencyObject(value.toUpperCase());
       if (baseCurrency) {
         return setBaseCurrency(baseCurrency);
       }
@@ -79,14 +79,14 @@ Main.propTypes = {
   selectedCurrencies: PropTypes.arrayOf(PropTypes.object).isRequired,
   baseCurrencyCode: PropTypes.string.isRequired,
   setBaseCurrency: PropTypes.func.isRequired,
-  getBaseCurrencyObject: PropTypes.func.isRequired,
+  getCurrencyObject: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   allCurrencies: getAllCurrenciesNameAndCode(state),
   selectedCurrencies: getSelectedCurrencies(state),
   baseCurrencyCode: getBaseCurrencyCode(state),
-  getBaseCurrencyObject: getBaseCurrency(state),
+  getCurrencyObject: getCurrency(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
