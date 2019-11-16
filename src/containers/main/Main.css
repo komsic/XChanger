@@ -38,8 +38,8 @@
 
 @media (min-width: 645px) {
   .main {
-    padding-left: 1.5em;
-    padding-right: 1.5em;
+    padding-left: 2em;
+    padding-right: 2em;
   }
   .main__body {
     display: flex;
