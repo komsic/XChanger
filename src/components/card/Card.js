@@ -13,9 +13,9 @@ const Card = ({ card: { symbol, name, code }, getRate, baseCurrencyCode }) => (
       <p className="large">{code}</p>
     </div>
 
-    <p className="medium">{name}</p>
+    <p className="large name">{name}</p>
 
-    <p className="large">{`1 ${baseCurrencyCode} - ${getRate(code)} ${code}`}</p>
+    <p className="big rate">{`1 ${baseCurrencyCode} - ${getRate(code)} ${code}`}</p>
   </li>
 );
 

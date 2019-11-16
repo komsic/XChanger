@@ -55,12 +55,12 @@ exports[`Storyshots Card long 1`] = `
     </p>
   </div>
   <p
-    className="medium"
+    className="large name"
   >
     Bosnia-Herzegovina Convertible Mark
   </p>
   <p
-    className="large"
+    className="big rate"
   >
     1 NGN - 0.004900 BAM
   </p>
@@ -1456,12 +1456,12 @@ exports[`Storyshots Main default 1`] = `
         </p>
       </div>
       <p
-        className="medium"
+        className="large name"
       >
         United States Dollar
       </p>
       <p
-        className="large"
+        className="big rate"
       >
         1 NGN - 0.002762 USD
       </p>
@@ -1484,12 +1484,12 @@ exports[`Storyshots Main default 1`] = `
         </p>
       </div>
       <p
-        className="medium"
+        className="large name"
       >
         Canadian Dollar
       </p>
       <p
-        className="large"
+        className="big rate"
       >
         1 NGN - 0.003644 CAD
       </p>
@@ -1512,12 +1512,12 @@ exports[`Storyshots Main default 1`] = `
         </p>
       </div>
       <p
-        className="medium"
+        className="large name"
       >
         Euro
       </p>
       <p
-        className="large"
+        className="big rate"
       >
         1 NGN - 0.002494 EUR
       </p>
@@ -1540,12 +1540,12 @@ exports[`Storyshots Main default 1`] = `
         </p>
       </div>
       <p
-        className="medium"
+        className="large name"
       >
         United Arab Emirates Dirham
       </p>
       <p
-        className="large"
+        className="big rate"
       >
         1 NGN - 0.010147 AED
       </p>
@@ -1568,12 +1568,12 @@ exports[`Storyshots Main default 1`] = `
         </p>
       </div>
       <p
-        className="medium"
+        className="large name"
       >
         Bosnia-Herzegovina Convertible Mark
       </p>
       <p
-        className="large"
+        className="big rate"
       >
         1 NGN - 0.004900 BAM
       </p>

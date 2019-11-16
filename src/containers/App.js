@@ -1,16 +1,27 @@
 /* eslint-disable no-console */
 import React from 'react';
 import './App.css';
-import Button from '../components/button/Button';
+import Header from './header/Header';
+import Hero from './hero/Hero';
+import Main from './main/Main';
+import Footer from './footer/Footer';
+import Modal from '../components/modal/Modal';
+import ManageCurrencies from './manage-currencies/ManageCurrencies';
 
 function App() {
   return (
     <div className="App">
-      <Button onClick={() => console.log('good lord')}>
-        <span role="img" aria-label="so cool">
-          😀 😎 👍 💯
-        </span>
-      </Button>
+      <Header />
+
+      <Hero />
+
+      <Main />
+
+      <Footer />
+
+      <Modal>
+        <ManageCurrencies />
+      </Modal>
     </div>
   );
 }
