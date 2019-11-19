@@ -1,4 +1,20 @@
 /*main module*/
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+.glower {
+animation: glow 1.5s ease-in-out infinite;
+background: #eee;
+color: transparent;
+cursor: progress;
+}
+
 .main {
   margin: 2em auto;
   margin-bottom: 2em;

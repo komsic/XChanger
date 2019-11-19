@@ -36,6 +36,37 @@ exports[`Storyshots Button text 1`] = `
 </button>
 `;
 
+exports[`Storyshots Card loading 1`] = `
+<li
+  className="card"
+>
+  <div
+    className="card__header"
+  >
+    <p
+      className="medium glower"
+    >
+      KM
+    </p>
+    <p
+      className="large glower"
+    >
+      BAM
+    </p>
+  </div>
+  <p
+    className="large name glower"
+  >
+    Bosnia-Herzegovina Convertible Mark
+  </p>
+  <p
+    className="big rate glower"
+  >
+    1 NGN - NaN BAM
+  </p>
+</li>
+`;
+
 exports[`Storyshots Card long 1`] = `
 <li
   className="card"
@@ -44,25 +75,25 @@ exports[`Storyshots Card long 1`] = `
     className="card__header"
   >
     <p
-      className="medium"
+      className="medium "
     >
       KM
     </p>
     <p
-      className="large"
+      className="large "
     >
       BAM
     </p>
   </div>
   <p
-    className="large name"
+    className="large name "
   >
     Bosnia-Herzegovina Convertible Mark
   </p>
   <p
-    className="big rate"
+    className="big rate "
   >
-    1 NGN - 0.004900 BAM
+    1 NGN - NaN BAM
   </p>
 </li>
 `;
@@ -256,9 +287,9 @@ exports[`Storyshots CurrencyForm default 1`] = `
           United Arab Emirates Dirham
         </option>
         <option
-          value="BAM"
+          value="BRL"
         >
-          Bosnia-Herzegovina Convertible Mark
+          Brazilian Real
         </option>
       </datalist>
       <img
@@ -496,9 +527,9 @@ exports[`Storyshots Hero default 1`] = `
                 United Arab Emirates Dirham
               </option>
               <option
-                value="BAM"
+                value="BRL"
               >
-                Bosnia-Herzegovina Convertible Mark
+                Brazilian Real
               </option>
             </datalist>
             <img
@@ -568,9 +599,123 @@ exports[`Storyshots Hero default 1`] = `
                 United Arab Emirates Dirham
               </option>
               <option
-                value="BAM"
+                value="BRL"
               >
-                Bosnia-Herzegovina Convertible Mark
+                Brazilian Real
+              </option>
+            </datalist>
+            <img
+              alt="dropdown logo"
+              src="dropdown.svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Hero empty 1`] = `
+<div
+  className="hero-container"
+>
+  <div
+    className="hero"
+  >
+    <h3
+      className="medium"
+    >
+      Check Currency Rate
+    </h3>
+    <div
+      className="hero__body"
+    >
+      <div
+        className="currency-form"
+      >
+        <h5
+          className="currency-form__title"
+        >
+          Send Currency
+        </h5>
+        <div
+          className="currency-form__input"
+        >
+          <input
+            disabled={false}
+            name="currencyOne"
+            onChange={[Function]}
+            placeholder="0.00"
+            value="0"
+          />
+          <div
+            className="dropdown-input "
+          >
+            <input
+              className=""
+              list="selected-currencies"
+              maxLength={3}
+              name="currencyOne"
+              onChange={[Function]}
+              placeholder="NGN"
+              type="text"
+              value=""
+            />
+            <datalist
+              id="selected-currencies"
+            >
+              <option
+                value="NGN"
+              >
+                Nigerian Naira
+              </option>
+            </datalist>
+            <img
+              alt="dropdown logo"
+              src="dropdown.svg"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="currency-form"
+      >
+        <h5
+          className="currency-form__title"
+        >
+          Receive Currency
+        </h5>
+        <div
+          className="currency-form__input"
+        >
+          <input
+            disabled={false}
+            name="currencyTwo"
+            onChange={[Function]}
+            placeholder="0.00"
+            value="0"
+          />
+          <div
+            className="dropdown-input "
+          >
+            <input
+              className=""
+              list="selected-currencies"
+              maxLength={3}
+              name="currencyTwo"
+              onChange={[Function]}
+              placeholder="NGN"
+              type="text"
+              value=""
+            />
+            <datalist
+              id="selected-currencies"
+            >
+              <option
+                value="NGN"
+              >
+                Nigerian Naira
               </option>
             </datalist>
             <img
@@ -1445,23 +1590,23 @@ exports[`Storyshots Main default 1`] = `
         className="card__header"
       >
         <p
-          className="medium"
+          className="medium "
         >
           $
         </p>
         <p
-          className="large"
+          className="large "
         >
           USD
         </p>
       </div>
       <p
-        className="large name"
+        className="large name "
       >
         United States Dollar
       </p>
       <p
-        className="big rate"
+        className="big rate "
       >
         1 NGN - 0.002762 USD
       </p>
@@ -1473,23 +1618,23 @@ exports[`Storyshots Main default 1`] = `
         className="card__header"
       >
         <p
-          className="medium"
+          className="medium "
         >
           CA$
         </p>
         <p
-          className="large"
+          className="large "
         >
           CAD
         </p>
       </div>
       <p
-        className="large name"
+        className="large name "
       >
         Canadian Dollar
       </p>
       <p
-        className="big rate"
+        className="big rate "
       >
         1 NGN - 0.003644 CAD
       </p>
@@ -1501,23 +1646,23 @@ exports[`Storyshots Main default 1`] = `
         className="card__header"
       >
         <p
-          className="medium"
+          className="medium "
         >
           €
         </p>
         <p
-          className="large"
+          className="large "
         >
           EUR
         </p>
       </div>
       <p
-        className="large name"
+        className="large name "
       >
         Euro
       </p>
       <p
-        className="big rate"
+        className="big rate "
       >
         1 NGN - 0.002494 EUR
       </p>
@@ -1529,23 +1674,23 @@ exports[`Storyshots Main default 1`] = `
         className="card__header"
       >
         <p
-          className="medium"
+          className="medium "
         >
           AED
         </p>
         <p
-          className="large"
+          className="large "
         >
           AED
         </p>
       </div>
       <p
-        className="large name"
+        className="large name "
       >
         United Arab Emirates Dirham
       </p>
       <p
-        className="big rate"
+        className="big rate "
       >
         1 NGN - 0.010147 AED
       </p>
@@ -1557,25 +1702,25 @@ exports[`Storyshots Main default 1`] = `
         className="card__header"
       >
         <p
-          className="medium"
+          className="medium "
         >
-          KM
+          R$
         </p>
         <p
-          className="large"
+          className="large "
         >
-          BAM
+          BRL
         </p>
       </div>
       <p
-        className="large name"
+        className="large name "
       >
-        Bosnia-Herzegovina Convertible Mark
+        Brazilian Real
       </p>
       <p
-        className="big rate"
+        className="big rate "
       >
-        1 NGN - 0.004900 BAM
+        1 NGN - 0.004900 BRL
       </p>
     </li>
   </ul>
@@ -2444,7 +2589,7 @@ exports[`Storyshots Main empty state 1`] = `
       Manage Currencies
     </p>
     <p>
-      to add currencies.
+      button at the top to add the currencies.
     </p>
   </div>
 </main>
@@ -3402,7 +3547,7 @@ exports[`Storyshots ManageCurrencies default 1`] = `
         className="currency-label"
       >
         <p>
-          (BAM) Bosnia-Herzegovina Convertible Mark
+          (BRL) Brazilian Real
         </p>
         <button
           className="button-image button--danger"
@@ -3482,6 +3627,11 @@ exports[`Storyshots ManageCurrencies default 1`] = `
             AZN
           </option>
           <option
+            value="Bosnia-Herzegovina Convertible Mark"
+          >
+            BAM
+          </option>
+          <option
             value="Barbadian Dollar"
           >
             BBD
@@ -3520,11 +3670,6 @@ exports[`Storyshots ManageCurrencies default 1`] = `
             value="Bolivian Boliviano"
           >
             BOB
-          </option>
-          <option
-            value="Brazilian Real"
-          >
-            BRL
           </option>
           <option
             value="Bahamian Dollar"

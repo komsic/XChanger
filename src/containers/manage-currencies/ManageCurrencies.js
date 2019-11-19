@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { doToggleModal } from '../../store/actions/ui';
@@ -7,9 +7,10 @@ import Button from '../../components/button/Button';
 import cancelLogo from '../../assets/images/cancel.svg';
 import CurrencyLabel from '../../components/currency-label/CurrencyLabel';
 import CurrencyChooser from '../../components/currency-chooser/CurrencyChooser';
-import { doAddBaseCurrency, doAddSelectedCurrency } from '../../store/actions/currency';
+import { doFetchRate } from '../../store/actions/currency';
 import {
-  getBaseCurrencyName, getSelectedCurrencies, getFilteredCurrencyList, getAllCurrenciesNameAndCode,
+  getBaseCurrencyNameCode, getSelectedCurrencies, getFilteredCurrencyList,
+  getAllCurrenciesNameAndCode,
 } from '../../store/selectors/currency';
 
 import './ManageCurrencies.css';
@@ -65,39 +66,63 @@ const Body = ({
 
 const ManageCurrency = ({
   onModalToggled,
-  onNewCurrencyAdded,
-  setBaseCurrency,
-  baseCurrencyName,
+  baseCurrency,
   selectedCurrencies,
   list,
   filteredList,
-}) => (
-  <div>
-    <Head onModalCanceled={onModalToggled} />
+  fetchRates,
+}) => {
+  const [currencies, setCurrencies] = useState(selectedCurrencies);
+  const [currency, setCurrency] = useState(baseCurrency);
 
-    <Body
-      onNewCurrencyAdded={onNewCurrencyAdded}
-      setBaseCurrency={setBaseCurrency}
-      baseCurrencyName={baseCurrencyName}
-      selectedCurrencies={selectedCurrencies}
-      list={list}
-      filteredList={filteredList}
-    />
-  </div>
-);
+  const onModalCancel = () => {
+    onModalToggled();
+    fetchRates(currency, currencies);
+  };
+
+  const onNewCurrencyAdded = (c) => {
+    setCurrencies([...currencies, c]);
+  };
+
+  const setBaseCurrency = (c) => {
+    setCurrency(c);
+  };
+
+  useEffect(() => {
+    setCurrencies(selectedCurrencies);
+    setCurrency(baseCurrency);
+  }, [selectedCurrencies, baseCurrency]);
+
+  return (
+    <div>
+      <Head onModalCanceled={onModalCancel} />
+
+      <Body
+        onNewCurrencyAdded={onNewCurrencyAdded}
+        setBaseCurrency={setBaseCurrency}
+        baseCurrencyName={currency.name}
+        selectedCurrencies={currencies}
+        list={list}
+        filteredList={filteredList}
+      />
+    </div>
+  );
+};
 
 ManageCurrency.propTypes = {
   list: PropTypes.arrayOf(PropTypes.object).isRequired,
   filteredList: PropTypes.arrayOf(PropTypes.object).isRequired,
-  baseCurrencyName: PropTypes.string.isRequired,
+  baseCurrency: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    code: PropTypes.string.isRequired,
+  }).isRequired,
   selectedCurrencies: PropTypes.arrayOf(PropTypes.object).isRequired,
   onModalToggled: PropTypes.func.isRequired,
-  onNewCurrencyAdded: PropTypes.func.isRequired,
-  setBaseCurrency: PropTypes.func.isRequired,
+  fetchRates: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  baseCurrencyName: getBaseCurrencyName(state),
+  baseCurrency: getBaseCurrencyNameCode(state),
   selectedCurrencies: getSelectedCurrencies(state),
   filteredList: getFilteredCurrencyList(state),
   list: getAllCurrenciesNameAndCode(state),
@@ -105,8 +130,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onModalToggled: () => dispatch(doToggleModal),
-  setBaseCurrency: (currency) => dispatch(doAddBaseCurrency(currency)),
-  onNewCurrencyAdded: (currency) => dispatch(doAddSelectedCurrency(currency)),
+  fetchRates: (baseCurrency, selectedCurrencies) => dispatch(
+    doFetchRate(baseCurrency, selectedCurrencies),
+  ),
 });
 
 export default connect(

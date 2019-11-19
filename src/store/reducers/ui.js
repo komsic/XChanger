@@ -5,7 +5,6 @@ export const applyToggleModal = (state) => ({
   modalStatus: state.modalStatus ? '' : 'is-close',
 });
 
-
 export const INITIAL_STATE = {
   modalStatus: 'is-close',
 };

@@ -10,8 +10,8 @@ export const store = {
 };
 
 // eslint-disable-next-line react/prop-types
-const ProviderTest = ({ children }) => (
-  <Provider store={store}>
+const ProviderTest = ({ children, data }) => (
+  <Provider store={data || store}>
     {children}
   </Provider>
 );

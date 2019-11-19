@@ -29,3 +29,25 @@ Styleguide Font-size
 .small {
   font-size: 1em;
 }
+
+.error-container {
+  text-align: right;
+}
+.error-container.is-close {
+  display: none;
+}
+.error {
+  background-color: #fbebd8;
+  border: 1px solid red;;
+  border-radius: .2em;
+  padding: 1em;
+}
+.error > span {
+  color: #111;
+}
+.error > * + * {
+  margin-left: 1em;
+}
+.black {
+  background-color: red;
+}
