@@ -1,15 +1,16 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import './Hero.css';
 import CurrencyForm from '../../components/currency-form/CurrencyForm';
 import {
-  getSelectedCurrenciesWithBaseCurrency, isCurrencyValid, getRates,
+  getSelectedCurrenciesWithBaseCurrency, isCurrencyValid, getRates, getLoadingStatus,
 } from '../../store/selectors/currency';
 
 export const CURRENCY_VALUE_CHANGE = 'CURRENCY_VALUE_CHANGE';
 export const CURRENCY_NAME_CHANGE = 'CURRENCY_NAME_CHANGE';
+export const CURRENCIES = 'CURRENCIES';
 
 const applyCurrencyNameChange = (state, { value, name, isNull }) => {
   let { currencies } = state;
@@ -43,10 +44,19 @@ const applyCurrencyValueChange = (state, { value, name }) => ({
   money: value.replace(/[^0-9.]/, ''),
 });
 
+const applyCurrenciesChange = (state, { currencyOne, currencyTwo }) => ({
+  ...state,
+  currencies: {
+    currencyOne,
+    currencyTwo,
+  },
+});
+
 export const heroReducer = (state, action) => {
   switch (action.type) {
     case CURRENCY_NAME_CHANGE: return applyCurrencyNameChange(state, action);
     case CURRENCY_VALUE_CHANGE: return applyCurrencyValueChange(state, action);
+    case CURRENCIES: return applyCurrenciesChange(state, action);
     default: return state;
   }
 };
@@ -64,11 +74,18 @@ export const INITIAL_STATE = (currencyOne, currencyTwo) => ({
 export const getCurrency = (currentCurrency, current, money, otherMoney) => (
   currentCurrency === current ? money : otherMoney);
 
-const Hero = ({ list, isNull, getRate }) => {
+const Hero = ({
+  list, isNull, getRate, loading,
+}) => {
+  let cur1 = '';
+  let cur2 = '';
+  if (list.length >= 2) {
+    cur1 = list[0].code;
+    cur2 = list[1].code;
+  }
   const [{
     currencies: { currencyOne, currencyTwo }, disabled, money, currentCurrency,
-  }, dispatch] = useReducer(heroReducer, INITIAL_STATE(list[0].code, list[1].code));
-
+  }, dispatch] = useReducer(heroReducer, INITIAL_STATE(cur1, cur2));
 
   const handleCurrencyChange = (value, name, status) => dispatch({
     isNull,
@@ -79,6 +96,16 @@ const Hero = ({ list, isNull, getRate }) => {
 
   const c1 = getCurrency(currentCurrency, 'currencyOne', money, getRate(currencyOne, currencyTwo, money));
   const c2 = getCurrency(currentCurrency, 'currencyTwo', money, getRate(currencyTwo, currencyOne, money));
+
+  const disabledStatus = loading || disabled;
+
+  useEffect(() => {
+    dispatch({
+      currencyTwo: cur2,
+      currencyOne: cur1,
+      type: CURRENCIES,
+    });
+  }, [cur1, cur2]);
 
   return (
     <div className="hero-container">
@@ -92,7 +119,7 @@ const Hero = ({ list, isNull, getRate }) => {
             name="currencyOne"
             currencyName={currencyOne}
             currencyValue={c1.toString()}
-            disabled={disabled}
+            disabled={disabledStatus}
             handleCurrencyNameChange={handleCurrencyChange}
             handleCurrencyValueChange={handleCurrencyChange}
           />
@@ -103,7 +130,7 @@ const Hero = ({ list, isNull, getRate }) => {
             name="currencyTwo"
             currencyName={currencyTwo}
             currencyValue={c2.toString()}
-            disabled={disabled}
+            disabled={disabledStatus}
             handleCurrencyNameChange={handleCurrencyChange}
             handleCurrencyValueChange={handleCurrencyChange}
           />
@@ -115,6 +142,7 @@ const Hero = ({ list, isNull, getRate }) => {
 
 Hero.propTypes = {
   list: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loading: PropTypes.bool.isRequired,
   isNull: PropTypes.func.isRequired,
   getRate: PropTypes.func.isRequired,
 };
@@ -123,6 +151,7 @@ const mapStateToProps = (state) => ({
   list: getSelectedCurrenciesWithBaseCurrency(state),
   isNull: isCurrencyValid(state),
   getRate: getRates(state),
+  loading: getLoadingStatus(state),
 });
 
 export default connect(

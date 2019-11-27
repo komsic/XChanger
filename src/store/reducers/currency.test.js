@@ -1,6 +1,9 @@
 import deepFreeze from 'deep-freeze';
 import currencyReducer, { INITIAL_STATE } from './currency';
-import { CURRENCY_LIST_REMOVE, CURRENCY_BASE_ADD, CURRENCY_SELECTED_ADD } from '../actionTypes';
+import {
+  CURRENCY_LIST_REMOVE, CURRENCY_RATE_ADD, CURRENCY_RATE_FETCH_ERROR,
+  CURRENCY_LOADING_STATUS, CURRENCY_ERROR_CANCEL,
+} from '../actionTypes';
 
 describe('currency reducer', () => {
   const currencies = {
@@ -48,27 +51,56 @@ describe('currency reducer', () => {
     expect(newState.selectedCurrencies.length).toEqual(2);
   });
 
-  it('should add base currencies when the action type is CURRENCY_BASE_ADD', () => {
-    const newState = currencyReducer({
-      allCurrencies: ['a', 'b', 'c'],
-      selectedCurrencies: [...Object.values(currencies)],
-    }, { type: CURRENCY_BASE_ADD, currency: currencies.CAD });
+  const rates = {
+    USD: 1,
+    CAD: 2,
+    EUR: 3,
+  };
 
-    expect(newState.baseCurrency).toEqual(currencies.CAD);
+  it('should not change the rates when action type is CURRENCY_RATE_ADD but rates is undefined', () => {
+    const newState = currencyReducer({ rates }, { type: CURRENCY_RATE_ADD });
+
+    expect(newState.rates).toEqual(rates);
   });
 
-  it('should add currency to the selected currencies when the action type is CURRENCY_SELECTED_ADD', () => {
+  it('should add rates when the action type is CURRENCY_RATE_ADD and rates is supplied', () => {
+    const newRates = {
+      USD: 6,
+      CAD: 5,
+      EUR: 4,
+    };
+
+    const newState = currencyReducer({ rates }, { type: CURRENCY_RATE_ADD, rates: newRates });
+
+    expect(newState.rates).toEqual(newRates);
+  });
+
+  it('should change error to the error message when action type is CURRENCY_RATE_FETCH_ERROR', () => {
+    const error = 'i am inevitable';
     const newState = currencyReducer({
       selectedCurrencies: [...Object.values(currencies)],
-    }, {
-      type: CURRENCY_SELECTED_ADD,
-      currency: {
-        symbol: '€',
-        name: 'Basidr',
-        code: 'NON',
+      baseCurrency: currencies.USD,
+      past: {
+        selectedCurrencies: [...Object.values(currencies)],
+        baseCurrency: currencies.USD,
       },
-    });
+    }, { error, type: CURRENCY_RATE_FETCH_ERROR });
 
-    expect(newState.selectedCurrencies.length).toEqual(4);
+    expect(newState.error).toEqual(error);
+  });
+
+  it('should turn loading state to true', () => {
+    const newState = currencyReducer({
+      selectedCurrencies: [...Object.values(currencies)],
+      baseCurrency: currencies.USD,
+    }, { type: CURRENCY_LOADING_STATUS });
+
+    expect(newState.loading).toEqual(true);
+  });
+
+  it('should change the error state to null', () => {
+    const newState = currencyReducer({}, { type: CURRENCY_ERROR_CANCEL });
+
+    expect(newState.error).toEqual(null);
   });
 });

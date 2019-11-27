@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DropdownInput from '../../components/dropdown-input/DropdownInput';
@@ -6,12 +6,13 @@ import Card from '../../components/card/Card';
 import {
   getAllCurrenciesNameAndCode, getSelectedCurrencies, getBaseCurrencyCode, getCurrency,
 } from '../../store/selectors/currency';
-import { doAddBaseCurrency } from '../../store/actions/currency';
+import { doFetchRate } from '../../store/actions/currency';
 
 import './Main.css';
 
 const Main = ({
-  allCurrencies, selectedCurrencies, baseCurrencyCode, setBaseCurrency, getCurrencyObject,
+  allCurrencies, selectedCurrencies, baseCurrencyCode,
+  getCurrencyObject, fetchRates,
 }) => {
   const [currency, setCurrency] = useState(baseCurrencyCode);
   const [error, setError] = useState(false);
@@ -21,7 +22,7 @@ const Main = ({
     if (value.length === 3) {
       const baseCurrency = getCurrencyObject(value.toUpperCase());
       if (baseCurrency) {
-        return setBaseCurrency(baseCurrency);
+        return fetchRates(baseCurrency, selectedCurrencies);
       }
 
       return setError(true);
@@ -29,6 +30,10 @@ const Main = ({
 
     return setError(false);
   };
+
+  useEffect(() => {
+    setCurrency(baseCurrencyCode);
+  }, [baseCurrencyCode]);
 
   const list = selectedCurrencies.length > 0 ? (
     <ul className="main__body">
@@ -43,7 +48,7 @@ const Main = ({
     <div className="empty-state">
       <p>You haven&apos;t selected any currency.  Please click</p>
       <p className="emp">Manage Currencies</p>
-      <p>to add currencies.</p>
+      <p>button at the top to add the currencies.</p>
     </div>
   );
 
@@ -78,8 +83,8 @@ Main.propTypes = {
   allCurrencies: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectedCurrencies: PropTypes.arrayOf(PropTypes.object).isRequired,
   baseCurrencyCode: PropTypes.string.isRequired,
-  setBaseCurrency: PropTypes.func.isRequired,
   getCurrencyObject: PropTypes.func.isRequired,
+  fetchRates: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -90,7 +95,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setBaseCurrency: (code) => dispatch(doAddBaseCurrency(code)),
+  fetchRates: (baseCurrency, selectedCurrencies) => dispatch(
+    doFetchRate(baseCurrency, selectedCurrencies),
+  ),
 });
 
 export default connect(

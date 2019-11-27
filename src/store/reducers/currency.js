@@ -1,5 +1,8 @@
 import currencies from '../../assets/json/currency.json';
-import { CURRENCY_LIST_REMOVE, CURRENCY_BASE_ADD, CURRENCY_SELECTED_ADD } from '../actionTypes';
+import {
+  CURRENCY_LIST_REMOVE, CURRENCY_RATE_ADD, CURRENCY_LOADING_STATUS, CURRENCY_RATE_FETCH_ERROR,
+  CURRENCY_ERROR_CANCEL,
+} from '../actionTypes';
 
 const applyRemoveCurrency = (state, { name }) => {
   const [, ...names] = name.split(' ');
@@ -9,26 +12,62 @@ const applyRemoveCurrency = (state, { name }) => {
   };
 };
 
-const applyAddBaseCurrency = (state, { currency }) => {
-  const { selectedCurrencies } = state;
+const applyAddRates = (state, { rates }) => {
+  const result = {
+    ...state,
+    loading: false,
+    error: null,
+    past: {},
+    future: {},
+  };
+
+  if (rates) {
+    result.rates = rates;
+  }
+
+  return result;
+};
+
+const applyRateFetchError = (state, { error }) => {
+  const {
+    baseCurrency, selectedCurrencies, past: { baseCurrency: bc, selectedCurrencies: sc },
+  } = state;
 
   return {
     ...state,
-    baseCurrency: currency,
-    selectedCurrencies: selectedCurrencies.filter(({ code }) => code !== currency.code),
+    error,
+    baseCurrency: bc,
+    selectedCurrencies: sc,
+    loading: false,
+    future: { baseCurrency, selectedCurrencies },
   };
 };
 
-export const applyAddSelectedCurrency = (state, { currency }) => {
-  const { selectedCurrencies } = state;
-
+const applyLoadingStatus = (state, { baseCurrency, selectedCurrencies }) => {
+  const { baseCurrency: bc, selectedCurrencies: sc } = state;
   return {
     ...state,
-    selectedCurrencies: [...selectedCurrencies, currency],
+    baseCurrency,
+    selectedCurrencies,
+    past: { baseCurrency: bc, selectedCurrencies: sc },
+    loading: true,
   };
 };
+
+const applyCancelError = (state) => ({
+  ...state,
+  error: null,
+});
 
 export const INITIAL_STATE = {
+  past: {
+    baseCurrency: {},
+    selectedCurrency: [],
+  },
+  future: {
+    baseCurrency: {},
+    selectedCurrency: [],
+  },
   baseCurrency: {
     symbol: '₦',
     code: 'NGN',
@@ -57,9 +96,9 @@ export const INITIAL_STATE = {
       code: 'AED',
     },
     {
-      symbol: 'KM',
-      name: 'Bosnia-Herzegovina Convertible Mark',
-      code: 'BAM',
+      symbol: 'R$',
+      name: 'Brazilian Real',
+      code: 'BRL',
     },
   ],
   rates: {
@@ -68,15 +107,19 @@ export const INITIAL_STATE = {
     CAD: 1.319045,
     EUR: 0.90287,
     AED: 3.673198,
-    BAM: 1.773642,
+    BRL: 1.773642,
   },
+  loading: false,
+  error: null,
 };
 
 const currencyReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case CURRENCY_LIST_REMOVE: return applyRemoveCurrency(state, action);
-    case CURRENCY_BASE_ADD: return applyAddBaseCurrency(state, action);
-    case CURRENCY_SELECTED_ADD: return applyAddSelectedCurrency(state, action);
+    case CURRENCY_RATE_ADD: return applyAddRates(state, action);
+    case CURRENCY_RATE_FETCH_ERROR: return applyRateFetchError(state, action);
+    case CURRENCY_LOADING_STATUS: return applyLoadingStatus(state, action);
+    case CURRENCY_ERROR_CANCEL: return applyCancelError(state, action);
     default: return state;
   }
 };

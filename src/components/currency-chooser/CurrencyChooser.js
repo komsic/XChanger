@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DropdownInput from '../dropdown-input/DropdownInput';
@@ -32,6 +32,10 @@ const CurrencyChooser = ({
     setError(false);
     setCurrency(value);
   };
+
+  useEffect(() => {
+    setCurrency(currencyName);
+  }, [currencyName]);
 
   return (
     <form className="currency-chooser" onSubmit={handleSubmit}>
